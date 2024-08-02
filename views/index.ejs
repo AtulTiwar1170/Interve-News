@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Interve-News</title>
+</head>
+<body>
+  <nav class="px-20 py-3 border-b-2 border-zinc-900 flex justify-between item-center">
+    <h1 class="text-6xl text-red-700 text-center font-bold">Interve-News</h1>
+    <div class="flex justify-between item-center py-5 w-[50rem]">
+        <h1><a class="font-bold text-zinc-700 hover:underline font-serif text-xl " href="/">Home</a></h1>
+        <h1><a class="font-bold text-zinc-700 hover:underline font-serif text-xl " href="charts">Charts</a></h1>
+        <h1><a class="font-bold text-zinc-700 hover:underline font-serif text-xl "
+                href="heat_map_based_on_sector">HeatMap</a></h1>
+        <h1><a class="font-bold text-zinc-700 hover:underline font-serif text-xl "
+                href="crypto_coins_heat_map">CryptHeatMap</a></h1>
+    </div>
+</nav>
+    <main class="flex">
+        <section class="w-[70%] min-h-screen px-5 py-3">
+            <header>
+                
+                <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+    "symbols": [
+      {
+        "proName": "FOREXCOM:SPXUSD",
+        "title": "S&P 500 Index"
+      },
+      {
+        "proName": "FOREXCOM:NSXUSD",
+        "title": "US 100 Cash CFD"
+      },
+      {
+        "proName": "FX_IDC:EURUSD",
+        "title": "EUR to USD"
+      },
+      {
+        "proName": "BITSTAMP:BTCUSD",
+        "title": "Bitcoin"
+      },
+      {
+        "proName": "BITSTAMP:ETHUSD",
+        "title": "Ethereum"
+      },
+      {
+        "description": "S&P Sensex",
+        "proName": "BSE:SENSEX"
+      },
+      {
+        "description": "Tesla",
+        "proName": "NASDAQ:TSLA"
+      },
+      {
+        "description": "Nifty",
+        "proName": "NSE:NIFTY"
+      }
+    ],
+    "showSymbolLogo": true,
+    "isTransparent": false,
+    "displayMode": "adaptive",
+    "colorTheme": "light",
+    "locale": "en"
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>
+    {
+    "symbols": [
+      {
+        "proName": "FOREXCOM:SPXUSD",
+        "title": "S&P 500 Index"
+      },
+      {
+        "proName": "FOREXCOM:NSXUSD",
+        "title": "US 100 Cash CFD"
+      },
+      {
+        "proName": "FX_IDC:EURUSD",
+        "title": "EUR to USD"
+      },
+      {
+        "proName": "BITSTAMP:BTCUSD",
+        "title": "Bitcoin"
+      },
+      {
+        "proName": "BITSTAMP:ETHUSD",
+        "title": "Ethereum"
+      },
+      {
+        "description": "S&P Sensex",
+        "proName": "BSE:SENSEX"
+      },
+      {
+        "description": "SensexETF",
+        "proName": "NSE:SENSEXETF"
+      }
+    ],
+    "isTransparent": false,
+    "showSymbolLogo": true,
+    "colorTheme": "light",
+    "locale": "en"
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+  <!-- TradingView Widget END -->
+            </header>
+            <div class="w-full h-[30rem] overflow-scroll">
+              <% if (Array.isArray(data.feed)) { %>
+                <% data.feed.forEach(function(feeds) { %>
+    
+                    <main class="w-full h-[33rem] border-[1px] border-slate-600 mt-5 rounded-lg">
+                        <h1 class="text-xl font-bold px-5 mt-2">Tittle : <%= feeds.title %></h1>
+                        <div class="flex justify-between item-center px-5 py-3">
+                            <p class="text-xl text-blue-500 font-bold">From : <a href="<%= feeds.url %>"><%= feeds.source%></a></p>
+                            <p class="text-xl font-bold">Author : <%= feeds.authors %></p>
+                            <p class="text-xl font-bold">Publish Time : <%= feeds.time_published %></p>
+                        </div>
+                        <div class="flex justify-between item-center w-full h-96 px-10">
+                            <div class="left w-1/2 h-full rounded-lg overflow-hidden">
+                                <img class="h-full w-full" src="<%= feeds.banner_image %>" alt="">
+                            </div>
+                            <div class="right w-1/2 h-full px-5 py-5 text-xl"><%= feeds.summary%></div>
+                        </div>
+                    </main>
+                    
+                <% }) %>
+            <% } else { %>
+                <h1>Loding...</h1> 
+            <% } %>
+            </div>
+        </section>
+        <section class="w-[30%]">
+            <div class=""><!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                  <div class="tradingview-widget-container__widget"></div>
+                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+                  {
+                  "feedMode": "all_symbols",
+                  "isTransparent": false,
+                  "displayMode": "regular",
+                  "width": "450",
+                  "height": "700",
+                  "colorTheme": "light",
+                  "locale": "en"
+                }
+                  </script>
+                </div>
+                <!-- TradingView Widget END --></div>
+        </section>
+    </main>
+    <script>
+
+    </script>
+</body>
+</html>
